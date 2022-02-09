@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:pokede_app/Services/PokeService.dart';
 import 'package:pokede_app/Stores/ability.dart';
 import 'package:pokede_app/Stores/pokemons.dart';
+import 'package:snack/snack.dart';
 
 class DetailedPokemonPage extends StatefulWidget{
   @override

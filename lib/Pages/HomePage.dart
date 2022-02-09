@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:pokede_app/Services/PokeService.dart';
 import 'package:pokede_app/Stores/pokemons.dart';
 import 'package:pokede_app/Widgets/PokeCard.dart';
-
+import 'package:snack/snack.dart';
 
 class HomePage extends StatefulWidget{
 

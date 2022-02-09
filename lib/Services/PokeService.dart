@@ -8,6 +8,7 @@ import 'package:pokede_app/Pages/DetailedPokemonPage.dart';
 import 'package:pokede_app/Stores/ability.dart';
 import 'package:pokede_app/Stores/pokemons.dart';
 import 'package:get/get.dart';
+import 'package:snack/snack.dart';
 
 import 'package:pokede_app/Stores/pokemons.dart';
 
@@ -36,8 +37,26 @@ class PokeService {
   Future getPokemonById(id) async {
     var url = Uri.parse('https://pokeapi.co/api/v2/pokemon/$id');
     var response = await http.get(url);
-    var responsejson = json.decode(response.body);
-    pokeStore.setPokemon(responsejson);
+    if(response.body == 'Not Found'){
+      print('pokemon not found');
+      return Get.snackbar(
+          'Pokemon not found',
+          'please enter a valid name or number',
+        snackStyle: SnackStyle.FLOATING,
+        backgroundColor: Colors.white,
+        duration: Duration(seconds: 1),
+
+      );
+
+
+    }else{
+      var responsejson = json.decode(response.body);
+      pokeStore.setPokemon(responsejson);
+
+    }
+
+
+
 
   }
 
