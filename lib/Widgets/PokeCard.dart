@@ -6,20 +6,8 @@ import 'package:pokede_app/Stores/pokemons.dart';
 import 'package:get/get.dart';
 
 
-
-
-
 class PokeCard extends StatelessWidget{
 
-
-
-  prev(){
-
-
-  }
-  next(){
-
-  }
 
 
   @override

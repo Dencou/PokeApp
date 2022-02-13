@@ -18,11 +18,6 @@ class AbilityService {
     var response = await http.get(url);
     var responsejson = json.decode(response.body);
     return responsejson;
-
-
-
-
-
   }
 
 

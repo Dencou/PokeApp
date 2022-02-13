@@ -38,15 +38,17 @@ class _DetailedPokemonPage extends State<DetailedPokemonPage>{
             padding: EdgeInsets.all(20),
             child: Column(
               children: [
+
                 Container(
                   width: double.infinity,
-                  height: 200,
+                  height: 240,
                   decoration: BoxDecoration(
-                    color: Colors.deepOrange.shade200,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Column(
                     children: [
+
                       Text(pokeStore.pokemonName.toUpperCase(), style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                       Row(
                         children: [
@@ -65,45 +67,95 @@ class _DetailedPokemonPage extends State<DetailedPokemonPage>{
                           )
                         ],
                       ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: pokeService.getTypeList(),),
+                      Text('Abilities:',style: TextStyle(fontWeight: FontWeight.bold),),
+                      SizedBox(height: 6,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: pokeStore.abilities.map((ability) => Text('${ability.name}      '),).toList(),
+                      ),
+
+
                     ],
                   ),
                 ),
                 SizedBox(height: 20,),
-                Text('Weak against'),
-                ListView.separated(
-                  physics: const NeverScrollableScrollPhysics(),
-                  scrollDirection: Axis.vertical,
-                  shrinkWrap: true,
-                  separatorBuilder: (BuildContext context, int index)=> Divider(),
-                  itemCount: pokeStore.doubleDamageFrom.length,
-                  itemBuilder: (BuildContext context, int index){
-                    return Container(
-                      color: (index %2 == 0) ? Colors.white : Colors.grey,
-                      child: ListTile(
-                        title: Text('${pokeStore.doubleDamageFrom[index]}'),
-                      ),
-                    );
-                  },
-                ),
-                Padding(padding: EdgeInsets.all(10),child: Text('Strong against'),),
-                ListView.separated(
-                  physics: const NeverScrollableScrollPhysics(),
-                  scrollDirection: Axis.vertical,
-                  shrinkWrap: true,
 
-                  separatorBuilder: (BuildContext context, int index)=> Divider(),
-                  itemCount: pokeStore.doubleDamageTo.length,
-                  itemBuilder: (BuildContext context, int index){
-                    return Container(
-                      color: (index %2 == 0) ? Colors.white : Colors.grey,
-                      child: ListTile(
-                        title: Text('${pokeStore.doubleDamageTo[index]}'),
+                Container(
+                  width: double.infinity,
+                  decoration:
+                  
+                  BoxDecoration(
+                    color: Colors.blue.shade100,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [BoxShadow(
+                      color: Colors.grey,
+                      offset: Offset(1,2),
+                      blurRadius: 1,
+                    )]
+                  ),
+                  
+                  child: Column(
+                    children: [
+                      Text('Weak against',style: TextStyle(color:Colors.black,fontSize: 18),),
+                      Divider(
+                        thickness: 2,
+                        endIndent: 30,
+                        indent: 30,
                       ),
-                    );
-                  },
+                      ListView.separated(
+                        physics: const NeverScrollableScrollPhysics(),
+                        scrollDirection: Axis.vertical,
+                        shrinkWrap: true,
+                        separatorBuilder: (BuildContext context, int index)=> Divider(),
+                        itemCount: pokeStore.doubleDamageFrom.length,
+                        itemBuilder: (BuildContext context, int index){
+                          return  Padding(padding: EdgeInsets.all(16),child: Text('${pokeStore.doubleDamageFrom[index]}',style: TextStyle(fontSize: 14),),);
+                        },
+                      ),
+                    ],
+                  )
                 ),
 
-                Column(children: pokeStore.abilities.map((ability) => Text(ability.name)).toList(),)
+                SizedBox(height: 25,),
+
+                Container(
+                    width: double.infinity,
+                    decoration:
+
+                    BoxDecoration(
+                        color: Colors.blue.shade100,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [BoxShadow(
+                          color: Colors.grey,
+                          offset: Offset(1,2),
+                          blurRadius: 1,
+                        )]
+                    ),
+
+                    child: Column(
+                      children: [
+                        Text('Strong against',style: TextStyle(color:Colors.black,fontSize: 18),),
+                        Divider(
+                          thickness: 2,
+                          endIndent: 30,
+                          indent: 30,
+                        ),
+                        ListView.separated(
+                          physics: const NeverScrollableScrollPhysics(),
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          separatorBuilder: (BuildContext context, int index)=> Divider(),
+                          itemCount: pokeStore.doubleDamageTo.length,
+                          itemBuilder: (BuildContext context, int index){
+                            return  Padding(padding: EdgeInsets.all(16),child: Text('${pokeStore.doubleDamageTo[index]}',style: TextStyle(fontSize: 14),),);
+                          },
+                        ),
+                      ],
+                    )
+                ),
               ],
             )
         ),

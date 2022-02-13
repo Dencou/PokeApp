@@ -38,7 +38,6 @@ class PokeService {
     var url = Uri.parse('https://pokeapi.co/api/v2/pokemon/$id');
     var response = await http.get(url);
     if(response.body == 'Not Found'){
-      print('pokemon not found');
       return Get.snackbar(
           'Pokemon not found',
           'please enter a valid name or number',
