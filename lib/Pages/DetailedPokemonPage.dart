@@ -30,7 +30,7 @@ class _DetailedPokemonPage extends State<DetailedPokemonPage>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:AppBar(
-        backgroundColor: Colors.yellow,
+        backgroundColor: Colors.yellowAccent.shade700,
         title: Text('Pokedex'),
       ),
       body: SingleChildScrollView(
@@ -45,31 +45,40 @@ class _DetailedPokemonPage extends State<DetailedPokemonPage>{
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey,
+                        offset: Offset(1,1),
+                        blurRadius: 1,
+                      )
+                    ],
                   ),
                   child: Column(
                     children: [
 
                       Text(pokeStore.pokemonName.toUpperCase(), style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                       Row(
-                        children: [
-                          Container(
+                          children: [
+                            Container(
+                                width: 185,
+                                height: 150,
+                                child: Container(width: 130, height: 130, child: Image.network(pokeStore.spriteFront, fit: BoxFit.fill,),)
+                            ),
+                            Container(
                               width: 185,
                               height: 150,
-                              child: Container(width: 130, height: 130, child: Image.network(pokeStore.spriteFront, fit: BoxFit.fill,),)
-                          ),
-                          Container(
-                            width: 185,
-                            height: 150,
-                            child: Center(
-                                child: Container(width: 150, height: 150, child: Image.network(pokeStore.spriteBack, fit: BoxFit.fill,),)
-                            ),
+                              child: Center(
+                                  child: Container(width: 150, height: 150, child: Image.network(pokeStore.spriteBack, fit: BoxFit.fill,),)
+                              ),
 
-                          )
-                        ],
-                      ),
+                            )
+                          ],
+                        ),
+
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: pokeService.getTypeList(),),
+                      SizedBox(height: 5,),
                       Text('Abilities:',style: TextStyle(fontWeight: FontWeight.bold),),
                       SizedBox(height: 6,),
                       Row(
@@ -86,17 +95,17 @@ class _DetailedPokemonPage extends State<DetailedPokemonPage>{
                 Container(
                   width: double.infinity,
                   decoration:
-                  
+
                   BoxDecoration(
-                    color: Colors.blue.shade100,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
                     boxShadow: [BoxShadow(
                       color: Colors.grey,
                       offset: Offset(1,2),
-                      blurRadius: 1,
+                      blurRadius: 4,
                     )]
                   ),
-                  
+
                   child: Column(
                     children: [
                       Text('Weak against',style: TextStyle(color:Colors.black,fontSize: 18),),
@@ -112,7 +121,7 @@ class _DetailedPokemonPage extends State<DetailedPokemonPage>{
                         separatorBuilder: (BuildContext context, int index)=> Divider(),
                         itemCount: pokeStore.doubleDamageFrom.length,
                         itemBuilder: (BuildContext context, int index){
-                          return  Padding(padding: EdgeInsets.all(16),child: Text('${pokeStore.doubleDamageFrom[index]}',style: TextStyle(fontSize: 14),),);
+                          return  Padding(padding: EdgeInsets.all(12),child: Text('${pokeStore.doubleDamageFrom[index]}',style: TextStyle(fontSize: 14),),);
                         },
                       ),
                     ],
@@ -126,12 +135,12 @@ class _DetailedPokemonPage extends State<DetailedPokemonPage>{
                     decoration:
 
                     BoxDecoration(
-                        color: Colors.blue.shade100,
+                        color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [BoxShadow(
                           color: Colors.grey,
                           offset: Offset(1,2),
-                          blurRadius: 1,
+                          blurRadius: 4,
                         )]
                     ),
 
@@ -150,7 +159,7 @@ class _DetailedPokemonPage extends State<DetailedPokemonPage>{
                           separatorBuilder: (BuildContext context, int index)=> Divider(),
                           itemCount: pokeStore.doubleDamageTo.length,
                           itemBuilder: (BuildContext context, int index){
-                            return  Padding(padding: EdgeInsets.all(16),child: Text('${pokeStore.doubleDamageTo[index]}',style: TextStyle(fontSize: 14),),);
+                            return  Padding(padding: EdgeInsets.all(12),child: Text('${pokeStore.doubleDamageTo[index]}',style: TextStyle(fontSize: 14),),);
                           },
                         ),
                       ],

@@ -6,16 +6,45 @@ import 'package:pokede_app/Stores/pokemons.dart';
 import 'package:get/get.dart';
 
 
+
+class MainPokeCard extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return PokeCard();
+
+  }
+
+
+}
+
+class SecondPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.yellow,
+          title: Text('Pokedex'),
+        ),
+        body: Hero(
+          tag: "tag",
+          child: Container(
+            width: 100,
+            height: 100,
+            color: Colors.red,
+          ),
+        )
+    );
+  }
+}
+
+
 class PokeCard extends StatelessWidget{
-
-
-
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(20),
       child: GestureDetector(
-        onTap: ()=>{Get.to(DetailedPokemonPage())},
+        onTap: ()=>{Get.to(DetailedPokemonPage(),transition: Transition.fade, duration: Duration(milliseconds: 200))},
         child: SingleChildScrollView(
           child: Align(
             alignment: Alignment.centerLeft,
@@ -43,9 +72,9 @@ class PokeCard extends StatelessWidget{
                       width: 200,
                       height: 200,
                       decoration: BoxDecoration(
-                          color: Colors.deepOrange.shade200,
+                          color: Colors.white,
                           borderRadius: BorderRadius.circular(20),
-                          border: Border.all()
+                          border: Border.all(width: 1)
                       ),
                       child: Column(
                         children: [

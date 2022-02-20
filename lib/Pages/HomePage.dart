@@ -34,7 +34,7 @@ class _HomePage extends State<HomePage>{
     return Scaffold(
       appBar: AppBar(
         title: Text('Pokedex'),
-        backgroundColor: Colors.yellow,
+        backgroundColor: Colors.yellowAccent.shade700,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -53,9 +53,17 @@ class _HomePage extends State<HomePage>{
 
                 ),
                 SizedBox(height: 40,),
-                ElevatedButton(onPressed: ()=>{submit()}, child: Text('Search Pokemon')),
+                ElevatedButton(onPressed: ()=>{submit()}, child: Text('Search Pokemon', style: TextStyle(color: Colors.black),),
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: Size.fromHeight(40),
+                    primary: Colors.yellow,
+                    shadowColor: Colors.yellow.shade800,
+                    elevation: 10,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+
+                ),),
                 Divider(thickness: 2,),
-                pokeStore.pokemonName.isEmpty ? Text('not found') : PokeCard(),
+                pokeStore.pokemonName.isEmpty ? Text('Start searching for pokemons!') : PokeCard(),
 
               ],
             )
